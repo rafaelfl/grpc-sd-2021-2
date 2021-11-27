@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package pizzaria;
+
+message Pizza {
+    int32 id = 1;
+    string nome = 2;
+    string descricao = 3;
+    double preco = 4;
+}
+
+message ListaDePizzas {
+    repeated Pizza pizzas = 1;
+}
+
+message Pedido {
+    repeated Pizza pizza = 1;
+    int32 quantidade = 2;
+    double total = 3;
+}
+
+message Vazia { }
+
+service PizzaService {
+    rpc AdicionarPizza (Pizza) returns (Vazia);
+    rpc ListarPizzas (Vazia) returns (ListaDePizzas);
+    rpc RealizarPedido (Pedido) returns (Vazia);
+}

@@ -6,8 +6,8 @@
 - Para saber mais: [Site do gRPC](https://grpc.io/)
 - gRPC = gRPC Remote Procedure Call
 - gRPC é composto por duas partes:
-  - o protocolo gRPC
-  - a serialização de dados
+  - o protocolo gRPC (HTTP/2)
+  - a serialização de dados (Protocol Buffers)
 
 ## Em que casos utilizar?
 
@@ -54,8 +54,10 @@
 
 - "Protocol buffers are Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data - think XML, but smaller, faster and simpler"
 
+- [Site do Protocol BUffers](https://developers.google.com/protocol-buffers)
+
 - Protocol buffers vs JSON
-  - Arquivos binários < JSON
+  - Dados binários < JSON
   - Processo de serialização mais leve do que o JSON
   - Gasta menos recursos da rede
 
