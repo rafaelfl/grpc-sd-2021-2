@@ -20,16 +20,35 @@ const pizzaService = protoDescriptor.PizzaService;
 
 const server = new grpc.Server();
 
+const bd = {
+    pedidos: [],
+    cardapio: [],
+};
+
 // implementação do serviço
 server.addService(pizzaService.service, {
     AdicionarPizza: (call, callback) => {
-        
+        const pizza = call.request;
+        bd.cardapio.push(pizza);
+
+        callback(null, {});
     },
 
     ListarPizzas: (call, callback) => {
+        callback(null, { pizzas: bd.cardapio });
     },
 
     RealizarPedido: (call, callback) => {
+        const pedido = call.request;
+        const valorTotal = pedido.pizza.preco * pedido.quantidade;
+
+        bd.pedidos.push(pedido);
+
+        callback(null, { valorTotal });
+    },
+
+    ListarPedidos: (call, callback) => {
+        callback(null, { pedidos: bd.pedidos });
     },
 });
 

@@ -14,9 +14,16 @@ message ListaDePizzas {
 }
 
 message Pedido {
-    repeated Pizza pizza = 1;
+    Pizza pizza = 1;
     int32 quantidade = 2;
-    double total = 3;
+}
+
+message ListaDePedidos {
+    repeated Pedido pedidos = 1;
+}
+
+message TotalPedido {
+    double valorTotal = 1;
 }
 
 message Vazia { }
@@ -24,5 +31,6 @@ message Vazia { }
 service PizzaService {
     rpc AdicionarPizza (Pizza) returns (Vazia);
     rpc ListarPizzas (Vazia) returns (ListaDePizzas);
-    rpc RealizarPedido (Pedido) returns (Vazia);
+    rpc RealizarPedido (Pedido) returns (TotalPedido);
+    rpc ListarPedidos (Vazia) returns (ListaDePedidos);
 }
